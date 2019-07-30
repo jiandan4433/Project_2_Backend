@@ -1,0 +1,5 @@
+package dev.project2.controller;
+
+public class UserController {
+
+}
