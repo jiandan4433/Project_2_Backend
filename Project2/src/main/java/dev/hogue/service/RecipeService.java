@@ -1,11 +1,8 @@
 package dev.hogue.service;
 
-import java.util.Set;
+import java.util.List;
 
-import dev.hogue.entities.Ingredient;
-import dev.hogue.entities.Instruction;
 import dev.hogue.entities.Recipe;
-import dev.hogue.entities.User;
 
 public interface RecipeService {
 	
@@ -16,10 +13,10 @@ public interface RecipeService {
 	Recipe createRecipe(Recipe recipe);
 	Recipe getRecipeById(int id);
 	Recipe getRecipeByName(String name);
-	Set<Recipe> getAllRecipeByUsername(User user);
 	Recipe updateRecipe(Recipe recipe);
-	Set<Recipe> getAllRecipes();
-	boolean deleteRecipe(int id);
+	
+	List<Recipe> getAllRecipes();
+	boolean deleteRecipe(Recipe recipe);
 	
 
 
