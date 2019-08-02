@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.hogue.entities.Recipe;
-import dev.hogue.service.DatabaseService;
+import dev.hogue.service.RecipeService;
 
 @RestController
 public class DatabaseController {
 	
 	@Autowired
-	DatabaseService dbs;
+	RecipeService dbs;
 	
 	@RequestMapping(value="/hello", method = RequestMethod.GET)
 	public String sayHello() {
