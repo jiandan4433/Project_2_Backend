@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "User")
+@Table(name = "users")
 public class User {
 	
 	@Id
@@ -31,7 +31,7 @@ public class User {
 		super();
 		this.username = username;
 		this.password = password;
-		this.recipes = recipes;
+		//this.recipes = recipes;
 	}
 
 	public String getUsername() {
