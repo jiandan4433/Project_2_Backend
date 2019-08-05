@@ -1,22 +1,23 @@
 package dev.hogue.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import dev.hogue.entities.Ingredient;
-import dev.hogue.entities.Instruction;
 import dev.hogue.entities.Recipe;
 import dev.hogue.entities.User;
 import dev.hogue.repositories.RecipeRepository;
 
 
+
 @Component
-@Service("DatabaseServiceSpring")
+@Service("RecipeServiceSpring")
 public class RecipeServiceSpring implements RecipeService{
 
 	@Autowired
@@ -30,41 +31,35 @@ public class RecipeServiceSpring implements RecipeService{
 
 	@Override
 	public Recipe getRecipeById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Recipe recipe = repo.findById(id);
+		return recipe;
 	}
 
 	@Override
 	public Recipe getRecipeByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Recipe recipe = repo.findByName(name);
+		return recipe;
 	}
 
-	@Override
-	public Set<Recipe> getAllRecipeByUsername(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public Recipe updateRecipe(Recipe recipe) {
-		// TODO Auto-generated method stub
+		repo.save(recipe);
 		return null;
 	}
 
 	@Override
-	public Set<Recipe> getAllRecipes() {
+	public List<Recipe> getAllRecipes() {
 		Iterable<Recipe> recipes = repo.findAll();
-		Set<Recipe> recipeSet = new HashSet<Recipe>((Collection<? extends Recipe>) recipes);
-
-		System.out.println(recipeSet);
-		return recipeSet;
+		List<Recipe> recipeList = new ArrayList<Recipe>((Collection<? extends Recipe>) recipes);
+		return recipeList;
 	}
 
 	@Override
-	public boolean deleteRecipe(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteRecipe(Recipe recipe) {
+		repo.delete(recipe);
+		return true;
 	}
 
 

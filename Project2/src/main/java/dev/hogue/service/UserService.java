@@ -1,5 +1,8 @@
 package dev.hogue.service;
 
+import java.util.Set;
+
+import dev.hogue.entities.Recipe;
 import dev.hogue.entities.User;
 
 public interface UserService {
@@ -9,7 +12,8 @@ public interface UserService {
 	 */
 	User createUser(User user);
 	User update(User user);
-	boolean deleteUser(String username);
+	boolean deleteUser(User user);
+	Set<Recipe> getRecipesByUser(User user);
 	
 
 }
