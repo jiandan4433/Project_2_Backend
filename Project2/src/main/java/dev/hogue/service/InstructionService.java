@@ -1,10 +1,6 @@
 package dev.hogue.service;
 
-import java.util.Set;
-
-import dev.hogue.entities.Ingredient;
 import dev.hogue.entities.Instruction;
-import dev.hogue.entities.Recipe;
 
 public interface InstructionService {
 	
@@ -13,10 +9,10 @@ public interface InstructionService {
 	 */
 	
 	Instruction createInstruction(Instruction instruction);
-	Instruction getInstructionByName(String name);
-	Instruction updateInstruction(Ingredient ingredient);
-	Set<Instruction> getAllInstructionByRecipe(Recipe recipe);
-	boolean deleteInstruction(int id);
+	Instruction getInstructionById(int id);
+	Instruction updateInstruction(Instruction instruction);
+
+	boolean deleteInstruction(Instruction instruction);
 
 
 }
