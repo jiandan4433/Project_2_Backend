@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import dev.hogue.entities.Ingredient;
+import dev.hogue.entities.Instruction;
 import dev.hogue.entities.Recipe;
 import dev.hogue.repositories.RecipeRepository;
 
@@ -57,6 +59,18 @@ public class RecipeServiceSpring implements RecipeService{
 	public boolean deleteRecipe(Recipe recipe) {
 		repoRecipe.delete(recipe);
 		return true;
+	}
+
+	@Override
+	public Recipe addIngredient(Recipe recipe, Ingredient ingredient) {
+		recipe.addIngredient(ingredient);
+		return recipe;
+	}
+
+	@Override
+	public Recipe addInstruction(Recipe recipe, Instruction instruction) {
+		recipe.addStep(instruction);
+		return recipe;
 	}
 
 

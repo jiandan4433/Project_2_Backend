@@ -16,6 +16,7 @@ public interface UserService {
 	boolean deleteUser(User user);
 	Set<Recipe> getRecipesByUser(User user);
 	List<User> getAllUsers();
+	User addRecipeToUser(User user, Recipe recipe);
 	
 
 }

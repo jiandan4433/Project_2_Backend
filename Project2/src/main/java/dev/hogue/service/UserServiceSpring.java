@@ -50,9 +50,15 @@ public class UserServiceSpring implements UserService{
 	
 	@Override
 	public List<User> getAllUsers(){
-		Iterable<User> users = repo.findAll();
+		Iterable<User> users = repoUser.findAll();
 		List<User> userList = new ArrayList<User>((Collection<? extends User>) users);
 		return userList;
+	}
+
+	@Override
+	public User addRecipeToUser(User user, Recipe recipe) {
+		user.addRecipe(recipe);
+		return user;
 	}
 }
 
