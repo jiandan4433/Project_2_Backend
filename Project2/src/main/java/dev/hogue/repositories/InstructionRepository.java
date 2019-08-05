@@ -8,4 +8,5 @@ import dev.hogue.entities.Instruction;
 @Repository
 public interface InstructionRepository extends CrudRepository<Instruction,Integer>{
 
+	Instruction findById(int id);
 }

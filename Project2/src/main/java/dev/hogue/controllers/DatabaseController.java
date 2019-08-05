@@ -1,6 +1,6 @@
 package dev.hogue.controllers;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,7 +39,7 @@ public class DatabaseController {
 	}
 	
 	@RequestMapping(value = "/testRecipe", method = RequestMethod.GET)
-	public List<Recipe> getOneRecipe() {
+	public Set<Recipe> getOneRecipe() {
 		return rs.getAllRecipes();
 	}
 
