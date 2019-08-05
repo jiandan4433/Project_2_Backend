@@ -17,7 +17,7 @@ import dev.hogue.repositories.RecipeRepository;
 
 
 @Component
-@Service("DatabaseServiceSpring")
+@Service("RecipeServiceSpring")
 public class RecipeServiceSpring implements RecipeService{
 
 	@Autowired
