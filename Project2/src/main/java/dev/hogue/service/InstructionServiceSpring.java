@@ -1,14 +1,10 @@
 package dev.hogue.service;
 
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import dev.hogue.entities.Ingredient;
 import dev.hogue.entities.Instruction;
-import dev.hogue.entities.Recipe;
 import dev.hogue.repositories.InstructionRepository;
 
 
@@ -17,36 +13,30 @@ import dev.hogue.repositories.InstructionRepository;
 public class InstructionServiceSpring implements InstructionService{
 
 	@Autowired
-	InstructionRepository repo;
+	InstructionRepository repoInstru;
 	
 	@Override
 	public Instruction createInstruction(Instruction instruction) {
-		// TODO Auto-generated method stub
-		return null;
+		return repoInstru.save(instruction);
 	}
 
 	@Override
-	public Instruction getInstructionByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public Instruction getInstructionById(int id) {
+		Instruction instruction = repoInstru.findById(id);
+		return instruction;
 	}
 
 	@Override
-	public Instruction updateInstruction(Ingredient ingredient) {
-		// TODO Auto-generated method stub
-		return null;
+	public Instruction updateInstruction(Instruction instruction) {
+		return repoInstru.save(instruction);
 	}
 
-	@Override
-	public Set<Instruction> getAllInstructionByRecipe(Recipe recipe) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
-	public boolean deleteInstruction(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteInstruction(Instruction instructiont) {
+		repoInstru.delete(instructiont);
+		return true;
 	}
 
 }
