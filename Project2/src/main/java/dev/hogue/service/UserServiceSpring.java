@@ -1,7 +1,9 @@
 package dev.hogue.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,13 @@ public class UserServiceSpring implements UserService{
 		Set<Recipe> recipeSet = new HashSet<Recipe>((Collection<? extends Recipe>) recipesIterable);
 		return recipeSet;
 
+	}
+	
+	@Override
+	public List<User> getAllUsers(){
+		Iterable<User> users = repo.findAll();
+		List<User> userList = new ArrayList<User>((Collection<? extends User>) users);
+		return userList;
 	}
 }
 

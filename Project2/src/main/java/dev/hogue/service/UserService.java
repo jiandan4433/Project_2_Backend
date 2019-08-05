@@ -1,5 +1,6 @@
 package dev.hogue.service;
 
+import java.util.List;
 import java.util.Set;
 
 import dev.hogue.entities.Recipe;
@@ -14,6 +15,7 @@ public interface UserService {
 	User update(User user);
 	boolean deleteUser(User user);
 	Set<Recipe> getRecipesByUser(User user);
+	List<User> getAllUsers();
 	
 
 }

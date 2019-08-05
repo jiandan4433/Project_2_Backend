@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.hogue.entities.Recipe;
+import dev.hogue.entities.User;
 import dev.hogue.service.IngredientService;
 import dev.hogue.service.InstructionService;
 import dev.hogue.service.RecipeService;
@@ -18,19 +19,19 @@ import dev.hogue.service.UserService;
 public class DatabaseController {
 	
 	@Autowired
-    @Qualifier("RecipeServiceSpring")
+    //@Qualifier("RecipeServiceSpring")
     RecipeService rs;
     
     @Autowired
-    @Qualifier("IngredientServiceSpring")
+    //@Qualifier("IngredientServiceSpring")
     IngredientService ingred;
     
     @Autowired
-    @Qualifier("InstructionServiceSpring")
+    //@Qualifier("InstructionServiceSpring")
     InstructionService instru;
     
     @Autowired
-    @Qualifier("UserServiceSpring")
+    //@Qualifier("UserServiceSpring")
     UserService us;
 	
 	@RequestMapping(value="/hello", method = RequestMethod.GET)
@@ -41,6 +42,11 @@ public class DatabaseController {
 	@RequestMapping(value = "/testRecipe", method = RequestMethod.GET)
 	public List<Recipe> getOneRecipe() {
 		return rs.getAllRecipes();
+	}
+	
+	@RequestMapping(value="/testingUser", method = RequestMethod.GET)
+	public List<User> getallUsers(){
+		return us.getAllUsers();
 	}
 
 }
