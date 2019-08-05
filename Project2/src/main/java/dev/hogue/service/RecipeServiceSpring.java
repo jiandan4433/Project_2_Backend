@@ -1,9 +1,7 @@
 package dev.hogue.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import dev.hogue.entities.Recipe;
-import dev.hogue.entities.User;
 import dev.hogue.repositories.RecipeRepository;
 
 
@@ -21,23 +18,23 @@ import dev.hogue.repositories.RecipeRepository;
 public class RecipeServiceSpring implements RecipeService{
 
 	@Autowired
-	RecipeRepository repo;
+	RecipeRepository repoRecipe;
 
 	@Override
 	public Recipe createRecipe(Recipe recipe) {
-		repo.save(recipe);
+		repoRecipe.save(recipe);
 		return recipe;
 	}
 
 	@Override
 	public Recipe getRecipeById(int id) {
-		Recipe recipe = repo.findById(id);
+		Recipe recipe = repoRecipe.findById(id);
 		return recipe;
 	}
 
 	@Override
 	public Recipe getRecipeByName(String name) {
-		Recipe recipe = repo.findByName(name);
+		Recipe recipe = repoRecipe.findByName(name);
 		return recipe;
 	}
 
@@ -45,20 +42,20 @@ public class RecipeServiceSpring implements RecipeService{
 
 	@Override
 	public Recipe updateRecipe(Recipe recipe) {
-		repo.save(recipe);
+		repoRecipe.save(recipe);
 		return null;
 	}
 
 	@Override
-	public List<Recipe> getAllRecipes() {
-		Iterable<Recipe> recipes = repo.findAll();
-		List<Recipe> recipeList = new ArrayList<Recipe>((Collection<? extends Recipe>) recipes);
-		return recipeList;
+	public Set<Recipe> getAllRecipes() {
+		Iterable<Recipe> recipes = repoRecipe.findAll();
+		Set<Recipe> recipeSet = new HashSet<Recipe>((Collection<? extends Recipe>) recipes);
+		return recipeSet;
 	}
 
 	@Override
 	public boolean deleteRecipe(Recipe recipe) {
-		repo.delete(recipe);
+		repoRecipe.delete(recipe);
 		return true;
 	}
 
