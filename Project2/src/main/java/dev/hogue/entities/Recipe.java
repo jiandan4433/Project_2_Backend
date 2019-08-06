@@ -33,7 +33,7 @@ public class Recipe {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Instruction> instructions;
 	
-	//@JsonManagedReference
+	@JsonManagedReference
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			name="recipe_ingredient",

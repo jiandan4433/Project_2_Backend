@@ -19,7 +19,7 @@ public class Ingredient {
 	@Column(name="name")
 	private String name;
 	
-	//@JsonBackReference
+	@JsonBackReference
 	@ManyToMany(mappedBy ="ingredients")
 	@Column(name="recipes")
 	private Set<Recipe> usedIn;

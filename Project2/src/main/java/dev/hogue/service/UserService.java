@@ -17,6 +17,7 @@ public interface UserService {
 	Set<Recipe> getRecipesByUser(User user);
 	List<User> getAllUsers();
 	User addRecipeToUser(User user, Recipe recipe);
+	User login(User user);
 	
 
 }
