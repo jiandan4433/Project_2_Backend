@@ -1,5 +1,6 @@
 package dev.hogue.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -25,13 +26,14 @@ public class User {
 
 	public User() {
 		super();
+		recipes = new HashSet<Recipe>();
 	}
 
 	public User(String username, String password, Set<Recipe> recipes) {
 		super();
 		this.username = username;
 		this.password = password;
-		//this.recipes = recipes;
+		this.recipes = recipes;
 	}
 
 	public String getUsername() {
@@ -51,6 +53,11 @@ public class User {
 	}
 
 	public Set<Recipe> getRecipes() {
+		return recipes;
+	}
+	
+	public Set<Recipe> addRecipe(Recipe recipe){
+		recipes.add(recipe);
 		return recipes;
 	}
 

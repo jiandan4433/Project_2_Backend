@@ -1,9 +1,11 @@
 package dev.hogue.controllers;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,6 +49,13 @@ public class DatabaseController {
 	@RequestMapping(value="/testingUser", method = RequestMethod.GET)
 	public List<User> getallUsers(){
 		return us.getAllUsers();
+	}
+	
+	@RequestMapping(value="/addRecipe", method = RequestMethod.POST)
+	public boolean addRecipe(@RequestBody Recipe json) {
+		System.out.println(json);
+		rs.createRecipe(json);
+		return false;
 	}
 
 }
