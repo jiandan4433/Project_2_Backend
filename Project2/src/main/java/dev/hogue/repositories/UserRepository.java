@@ -13,6 +13,7 @@ import dev.hogue.entities.User;
 public interface UserRepository extends CrudRepository<User,Integer>{
 	
 	Set<Recipe> findByUsername(String username);
+	User findUserByUsername(String username);
 	
 
 }

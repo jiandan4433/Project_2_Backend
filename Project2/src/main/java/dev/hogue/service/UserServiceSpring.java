@@ -60,6 +60,15 @@ public class UserServiceSpring implements UserService{
 		user.addRecipe(recipe);
 		return user;
 	}
+
+	@Override
+	public User login(User user) {
+		User temp = repoUser.findUserByUsername(user.getUsername());
+		if(temp.getPassword() == user.getPassword()) {
+			return temp;
+		}
+		return null;
+	}
 }
 
 
