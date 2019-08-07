@@ -75,19 +75,16 @@ public class DatabaseController {
 
 	@RequestMapping(value="/createRecipe", method = RequestMethod.POST)
 	public boolean addRecipe(@RequestBody Recipe recipe) {
-		if(rs.recipeExists(recipe)) {
-			return false;
-		}
 		rs.createRecipe(recipe);
 		return true;
 	}
 	@RequestMapping(value="/updateRecipe", method = RequestMethod.PUT)
 	public Recipe updateRecipe(@RequestBody Recipe recipe) {
-		recipe = rs.updateRecipe(recipe);
-		return recipe;
+		return rs.updateRecipe(recipe);
 	}
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public User userLogin(@RequestBody User user) {
+		//Mmove most of this logic to the service
 		User userData = us.login(user);
 		if(userData == null)
 			return null;
@@ -99,20 +96,15 @@ public class DatabaseController {
 	}
 	@RequestMapping(value="/recipes", method = RequestMethod.GET)
 	public Set<Recipe> getRecipes(){
-
 		return rs.getAllRecipes();
 	}
 	@RequestMapping(value="/createUser", method = RequestMethod.POST)
 	public User createUser(@RequestBody User user) {
-		if(us.userExists(user))
-			return null;
-		user = us.createUser(user);
-		return user;
+		return us.createUser(user);
 	}
 	@RequestMapping(value= "/updateUser", method = RequestMethod.PUT)
 	public User updateUser(@RequestBody User user) {
-		user = us.update(user);
-		return user;
+		return us.update(user);
 	}
 	@RequestMapping(value ="/sendSMS", method = RequestMethod.GET)
 	public void sendSMS() {

@@ -24,8 +24,10 @@ public class RecipeServiceSpring implements RecipeService{
 
 	@Override
 	public Recipe createRecipe(Recipe recipe) {
-		repoRecipe.save(recipe);
-		return recipe;
+//		if(recipeExists(recipe)) {
+//			return null;
+//		}
+		return repoRecipe.save(recipe);
 	}
 
 	@Override
@@ -73,13 +75,13 @@ public class RecipeServiceSpring implements RecipeService{
 		return recipe;
 	}
 
-	@Override
-	public boolean recipeExists(Recipe recipe) {
-		if(repoRecipe.findByName(recipe.getName()) == null ) {
-			return false;
-		}
-		return true;
-	}
+//	@Override
+//	public boolean recipeExists(Recipe recipe) {
+//		if(repoRecipe.findByName(recipe.getName()) == null ) {
+//			return false;
+//		}
+//		return true;
+//	}
 
 
 
