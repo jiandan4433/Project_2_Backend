@@ -1,6 +1,8 @@
 package ControllMocks;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
@@ -25,6 +28,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.google.gson.Gson;
 
 import dev.hogue.entities.Ingredient;
+import dev.hogue.entities.Recipe;
+import dev.hogue.entities.User;
 import dev.hogue.service.IngredientService;
 import dev.hogue.service.InstructionService;
 import dev.hogue.service.RecipeService;
@@ -55,6 +60,78 @@ public class Mocks {
 	@MockBean
 	@Qualifier("UserServiceSpring")
 	UserService us;
+	
+	@Test
+	public void addRecipe() throws Exception {
+//		Recipe fake1 = new Recipe();
+//		fake1.setName("testing");
+//		fake1.setIngredients(null);
+//		fake1.setInstructions(null);
+//		Gson gson = new Gson();
+//		String json = gson.toJson(fake1);
+//		System.out.println(json);
+		String json = "{\"id\":0,\"name\":\"testing\"}";
+		Gson gson = new Gson();
+		//creating an recipe object off of the json
+		Recipe recipe = gson.fromJson(json, Recipe.class);
+		Mockito.when(rs.createRecipe(recipe)).thenReturn(recipe);
+		ResultActions ra = mockmvc.perform(post("/createRecipe").contentType(MediaType.APPLICATION_JSON_VALUE).content(json));
+		ra.andExpect(status().isOk());
+	}
+	
+	
+	@Test
+	public void adduser() throws Exception {
+//		User fake1 = new User();
+//		fake1.setUsername("hui");
+//		fake1.setPassword("password");
+//		fake1.setRecipes(null);
+//		Gson gson = new Gson();
+//		String json = gson.toJson(fake1);
+//		System.out.println(json);
+		String json = "{\"username\":\"hui\",\"password\":\"password\"}";
+		Gson gson = new Gson();
+		User user = gson.fromJson(json, User.class);
+		Mockito.when(us.createUser(user)).thenReturn(user);
+		ResultActions ra = mockmvc.perform(post("/createUser").contentType(MediaType.APPLICATION_JSON_VALUE).content(json));
+		ra.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void updateUser() throws Exception {
+		User fake1 = new User();
+		fake1.setUsername("hui");
+		fake1.setPassword("oldpassword");
+		String json = "{\"username\":\"hui\",\"password\":\"new_password\"}";
+		Gson gson = new Gson();
+		User user = gson.fromJson(json, User.class);
+		Mockito.when(us.createUser(user)).thenReturn(user);
+		ResultActions ra = mockmvc.perform(put("/updateUser").contentType(MediaType.APPLICATION_JSON_VALUE).content(json));
+		ra.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void getAllRecipe() throws Exception {
+		Recipe fake1 = new Recipe();
+		Recipe fake2 = new Recipe();
+		fake1.setName("test1");
+		fake1.setIngredients(null);
+		fake1.setIngredients(null);
+		fake2.setName("test1");
+		fake2.setIngredients(null);
+		fake2.setIngredients(null);
+		Set<Recipe> recipes = new HashSet<Recipe>();
+		recipes.add(fake1);
+		recipes.add(fake2);
+		Gson gson = new Gson();
+		String json = gson.toJson(recipes);
+		System.out.println(json);
+		
+		Mockito.when(rs.getAllRecipes()).thenReturn(recipes);
+		ResultActions rs = mockmvc.perform(get("/recipes"));
+		rs.andExpect(status().isOk());
+		rs.andExpect(content().json(json));
+	}
 	
 	@Test
 	public void getAllIngredient() throws Exception {

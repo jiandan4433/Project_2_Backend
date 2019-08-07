@@ -1,7 +1,5 @@
 package dev.hogue.test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.MethodOrderer;
