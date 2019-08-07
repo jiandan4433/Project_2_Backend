@@ -35,6 +35,7 @@ public class User {
 		super();
 		this.username = username;
 		this.password = password;
+		this.recipes = new HashSet<Recipe>();
 	}
 
 
