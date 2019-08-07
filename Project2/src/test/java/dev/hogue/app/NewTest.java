@@ -89,7 +89,7 @@ public class NewTest {
 		ingredient.setName("riceFake");
 		ingred.createIngredient(ingredient);
 		recipe.addIngredient(ingredient);
-		System.out.println(recipe);
+		System.out.println("\n\n\n"+recipe+"\n\n\n");
 	}
 	
 	@Test

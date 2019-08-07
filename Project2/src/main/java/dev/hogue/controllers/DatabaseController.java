@@ -65,13 +65,13 @@ public class DatabaseController {
 	public static final String ACC_SID = "AC78d6b0c27a1fcd2ae8807954854bd0d6";
 	public static final String AUTH_TOKEN = "19ab9fe0b1872eede5e87bee57f31c5e";
 
-	@RequestMapping(value="/keyTest", method = RequestMethod.GET)
-	public boolean testKey(){
-		Instruction instruction = new Instruction();
-		instruction.setDescription("Should not have been able to add this");
-		instru.createInstruction(instruction);
-		return false;
-	}
+//	@RequestMapping(value="/keyTest", method = RequestMethod.GET)
+//	public boolean testKey(){
+//		Instruction instruction = new Instruction();
+//		instruction.setDescription("Should not have been able to add this");
+//		instru.createInstruction(instruction);
+//		return false;
+//	}
 
 	@RequestMapping(value="/createRecipe", method = RequestMethod.POST)
 	public boolean addRecipe(@RequestBody Recipe recipe) {
