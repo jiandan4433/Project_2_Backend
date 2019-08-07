@@ -1,10 +1,8 @@
 package dev.hogue.controllers;
 
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.twilio.Twilio;
-import com.twilio.http.TwilioRestClient;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
 import dev.hogue.entities.Ingredient;
-import dev.hogue.entities.Instruction;
 import dev.hogue.entities.Recipe;
 import dev.hogue.entities.User;
 import dev.hogue.service.IngredientService;
