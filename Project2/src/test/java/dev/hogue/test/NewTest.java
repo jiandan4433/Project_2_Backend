@@ -1,4 +1,4 @@
-package dev.hogue.app;
+package dev.hogue.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
