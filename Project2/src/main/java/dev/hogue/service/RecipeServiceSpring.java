@@ -73,6 +73,14 @@ public class RecipeServiceSpring implements RecipeService{
 		return recipe;
 	}
 
+	@Override
+	public boolean recipeExists(Recipe recipe) {
+		if(repoRecipe.findByName(recipe.getName()) == null ) {
+			return false;
+		}
+		return true;
+	}
+
 
 
 	

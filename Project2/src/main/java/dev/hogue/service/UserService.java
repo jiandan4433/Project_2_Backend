@@ -18,6 +18,7 @@ public interface UserService {
 	List<User> getAllUsers();
 	User addRecipeToUser(User user, Recipe recipe);
 	User login(User user);
+	boolean userExists(User user);
 	
 
 }

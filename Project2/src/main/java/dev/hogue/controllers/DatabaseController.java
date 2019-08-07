@@ -17,6 +17,7 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
 import dev.hogue.entities.Ingredient;
+import dev.hogue.entities.Instruction;
 import dev.hogue.entities.Recipe;
 import dev.hogue.entities.User;
 import dev.hogue.service.IngredientService;
@@ -59,14 +60,26 @@ public class DatabaseController {
 	//		return us.getAllUsers();
 	//	}
 
+
+
 	public static final String ACC_SID = "AC78d6b0c27a1fcd2ae8807954854bd0d6";
 	public static final String AUTH_TOKEN = "19ab9fe0b1872eede5e87bee57f31c5e";
 
-	@RequestMapping(value="/createRecipe", method = RequestMethod.POST)
-	public boolean addRecipe(@RequestBody Recipe json) {
-		System.out.println(json);
-		rs.createRecipe(json);
+	@RequestMapping(value="/keyTest", method = RequestMethod.GET)
+	public boolean testKey(){
+		Instruction instruction = new Instruction();
+		instruction.setDescription("Should not have been able to add this");
+		instru.createInstruction(instruction);
 		return false;
+	}
+
+	@RequestMapping(value="/createRecipe", method = RequestMethod.POST)
+	public boolean addRecipe(@RequestBody Recipe recipe) {
+		if(rs.recipeExists(recipe)) {
+			return false;
+		}
+		rs.createRecipe(recipe);
+		return true;
 	}
 	@RequestMapping(value="/updateRecipe", method = RequestMethod.PUT)
 	public Recipe updateRecipe(@RequestBody Recipe recipe) {
@@ -86,10 +99,13 @@ public class DatabaseController {
 	}
 	@RequestMapping(value="/recipes", method = RequestMethod.GET)
 	public Set<Recipe> getRecipes(){
+
 		return rs.getAllRecipes();
 	}
 	@RequestMapping(value="/createUser", method = RequestMethod.POST)
 	public User createUser(@RequestBody User user) {
+		if(us.userExists(user))
+			return null;
 		user = us.createUser(user);
 		return user;
 	}
