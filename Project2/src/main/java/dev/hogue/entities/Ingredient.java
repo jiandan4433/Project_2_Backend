@@ -56,5 +56,9 @@ public class Ingredient {
 		usedIn.add(recipe);
 	}
 
+	@Override
+	public String toString() {
+		return "Ingredient [name=" + name + "]";
+	}
 
 }

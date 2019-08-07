@@ -20,7 +20,7 @@ public interface RecipeService {
 	Recipe addInstruction(Recipe recipe, Instruction instruction);
 	Set<Recipe> getAllRecipes();
 	boolean deleteRecipe(Recipe recipe);
-	boolean recipeExists(Recipe recipe);
+//	boolean recipeExists(Recipe recipe);
 	
 
 

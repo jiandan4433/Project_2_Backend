@@ -23,6 +23,8 @@ public class UserServiceSpring implements UserService{
 	
 	@Override
 	public User createUser(User user) {
+		if(userExists(user))
+			return null;
 		return repoUser.save(user);
 	}
 

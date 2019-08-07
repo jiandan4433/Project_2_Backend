@@ -46,8 +46,8 @@ public class NewTest {
 	@Qualifier("UserServiceSpring")
 	UserService us;
 
-	public User user = new User("admintest", "passwordtest");
-	public User user2 = new User("user2", "password2");
+	public User user = new User("cc", "passwordtest");
+	public User user2 = new User("cc", "password2");
 	public Recipe recipe = new Recipe();
 	public Ingredient ingredient = new Ingredient();
 	public Instruction instruction = new Instruction();
@@ -58,7 +58,7 @@ public class NewTest {
 	public void createUser() {
 		System.out.println("step 1");
 		us.createUser(user);
-		us.createUser(user2);
+		System.out.println(us.createUser(user2));
 	}
 
 
@@ -75,7 +75,7 @@ public class NewTest {
 	@Commit
 	@Order(3)
 	public void createRecipe() {
-	System.out.println("step 3");
+		System.out.println("step 3");
 		recipe.setName("testing2");
 		rs.createRecipe(recipe);
 	}
@@ -87,6 +87,7 @@ public class NewTest {
 		ingredient.setName("riceFake");
 		ingred.createIngredient(ingredient);
 		recipe.addIngredient(ingredient);
+		
 		System.out.println("\n\n\n"+recipe+"\n\n\n");
 	}
 	
