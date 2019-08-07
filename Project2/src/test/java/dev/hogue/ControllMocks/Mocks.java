@@ -1,4 +1,4 @@
-package ControllMocks;
+package dev.hogue.ControllMocks;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

@@ -28,7 +28,7 @@ import dev.hogue.service.UserService;
 @ContextConfiguration(classes = dev.hogue.app.Project2Application.class)
 @SpringBootTest
 @Transactional
-public class NewTest {
+public class UnitTests {
 
 	@Autowired
 	@Qualifier("RecipeServiceSpring")
