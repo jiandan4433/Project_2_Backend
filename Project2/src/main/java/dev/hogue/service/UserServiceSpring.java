@@ -69,6 +69,14 @@ public class UserServiceSpring implements UserService{
 		}
 		return null;
 	}
+	
+	@Override
+	public boolean userExists(User user) {
+		if(repoUser.findUserByUsername(user.getUsername()) == null) {
+			return false;
+		}
+		return true;
+	}
 }
 
 
