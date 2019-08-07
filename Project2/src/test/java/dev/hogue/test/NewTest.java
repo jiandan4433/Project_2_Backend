@@ -1,6 +1,4 @@
-package dev.hogue.app;
-
-import static org.junit.jupiter.api.Assertions.*;
+package dev.hogue.test;
 
 import javax.transaction.Transactional;
 
