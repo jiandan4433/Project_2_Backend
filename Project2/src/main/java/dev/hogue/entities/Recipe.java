@@ -16,8 +16,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table; // Ask if we needed to import the Hibernate version of table
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "recipes")
 public class Recipe {
@@ -30,7 +28,7 @@ public class Recipe {
 	@Column(name="title")
 	private String name;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Instruction> instructions;
 	
 	//@JsonManagedReference

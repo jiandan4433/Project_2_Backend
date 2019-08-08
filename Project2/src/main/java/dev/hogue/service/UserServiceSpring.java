@@ -33,7 +33,8 @@ public class UserServiceSpring implements UserService{
 		// TODO Auto-generated method stub
 		//Search for the user, if it doesn't exist return null
 		// TODO
-		return repoUser.save(user);
+		User temp = repoUser.save(user);
+		return temp;
 	}
 
 	@Override
