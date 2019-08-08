@@ -98,7 +98,7 @@ public class Mocks {
 		Recipe fake1 = new Recipe();
 		fake1.setName("testing");		
 		Instruction fake1step = new Instruction();
-		fake1step.setDescription("testing this shit out");
+		fake1step.setDescription("testing this out");
 		fake1.addStep(fake1step);
 		Ingredient fake1In = new Ingredient();
 		fake1In.setName("testing");
