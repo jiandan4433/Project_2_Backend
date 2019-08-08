@@ -3,6 +3,7 @@ package dev.hogue.controllers;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,7 +70,7 @@ public class DatabaseController {
 //		return false;
 //	}
 
-	@RequestMapping(value="/createRecipe", method = RequestMethod.POST)
+	@RequestMapping(value="/createRecipe", method = RequestMethod.POST, consumes={"application/json"})
 	public boolean addRecipe(@RequestBody Recipe recipe) {
 		rs.createRecipe(recipe);
 		return true;
@@ -94,11 +95,11 @@ public class DatabaseController {
 	public Set<Recipe> getRecipes(){
 		return rs.getAllRecipes();
 	}
-	@RequestMapping(value="/createUser", method = RequestMethod.POST)
+	@RequestMapping(value="/createUser", method = RequestMethod.POST, consumes={"application/json"})
 	public User createUser(@RequestBody User user) {
 		return us.createUser(user);
 	}
-	@RequestMapping(value= "/updateUser", method = RequestMethod.PUT)
+	@RequestMapping(value= "/updateUser", method = RequestMethod.PUT, consumes={"application/json"})
 	public User updateUser(@RequestBody User user) {
 		return us.update(user);
 	}

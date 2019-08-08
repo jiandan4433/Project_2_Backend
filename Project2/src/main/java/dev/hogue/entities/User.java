@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -19,6 +20,7 @@ public class User {
 	@Column(name = "username")
 	private String username;
 	@Column(name = "password")
+	@NotBlank
 	private String password;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -30,16 +32,6 @@ public class User {
 	}
 
 	
-	
-	public User(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.recipes = new HashSet<Recipe>();
-	}
-
-
-
 	public User(String username, String password, Set<Recipe> recipes) {
 		super();
 		this.username = username;

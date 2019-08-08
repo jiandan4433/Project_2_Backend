@@ -28,6 +28,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.google.gson.Gson;
 
 import dev.hogue.entities.Ingredient;
+import dev.hogue.entities.Instruction;
 import dev.hogue.entities.Recipe;
 import dev.hogue.entities.User;
 import dev.hogue.service.IngredientService;
@@ -64,9 +65,17 @@ public class Mocks {
 	@Test
 	public void addRecipe() throws Exception {
 //		Recipe fake1 = new Recipe();
-//		fake1.setName("testing");
-//		fake1.setIngredients(null);
-//		fake1.setInstructions(null);
+//		fake1.setName("testing");		
+//		Instruction fake1step = new Instruction();
+//		fake1step.setDescription("testing this shit out");
+//		fake1.addStep(fake1step);
+//		
+//		
+//		Ingredient fake1In = new Ingredient();
+//		fake1In.setName("testing");
+//		fake1In.setUsedIn(null);
+//		fake1.addIngredient(fake1In);
+//		
 //		Gson gson = new Gson();
 //		String json = gson.toJson(fake1);
 //		System.out.println(json);
@@ -82,15 +91,24 @@ public class Mocks {
 	
 	@Test
 	public void adduser() throws Exception {
-//		User fake1 = new User();
-//		fake1.setUsername("hui");
-//		fake1.setPassword("password");
-//		fake1.setRecipes(null);
-//		Gson gson = new Gson();
-//		String json = gson.toJson(fake1);
-//		System.out.println(json);
-		String json = "{\"username\":\"hui\",\"password\":\"password\"}";
+		User fake = new User();
+		fake.setUsername("hui");
+		fake.setPassword("password");
+		Recipe fake1 = new Recipe();
+		fake1.setName("testing");		
+		Instruction fake1step = new Instruction();
+		fake1step.setDescription("testing this shit out");
+		fake1.addStep(fake1step);
+		Ingredient fake1In = new Ingredient();
+		fake1In.setName("testing");
+		fake1In.setUsedIn(null);
+		fake1.addIngredient(fake1In);
+		fake.addRecipe(fake1);
 		Gson gson = new Gson();
+		String json = gson.toJson(fake);
+		System.out.println(json);
+//		String json = "{\"username\":\"hui\",\"password\":\"password\"}";
+//		Gson gson = new Gson();
 		User user = gson.fromJson(json, User.class);
 		Mockito.when(us.createUser(user)).thenReturn(user);
 		ResultActions ra = mockmvc.perform(post("/createUser").contentType(MediaType.APPLICATION_JSON_VALUE).content(json));
@@ -102,7 +120,7 @@ public class Mocks {
 		User fake1 = new User();
 		fake1.setUsername("hui");
 		fake1.setPassword("oldpassword");
-		String json = "{\"username\":\"hui\",\"password\":\"new_password\"}";
+		String json = "{\"username\":\"hui\",\"password\":\"password\"}";
 		Gson gson = new Gson();
 		User user = gson.fromJson(json, User.class);
 		Mockito.when(us.createUser(user)).thenReturn(user);
