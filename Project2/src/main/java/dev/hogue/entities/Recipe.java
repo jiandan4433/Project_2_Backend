@@ -34,7 +34,7 @@ public class Recipe {
 	private Set<Instruction> instructions;
 	
 	//@JsonManagedReference
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(
 			name="recipe_ingredient",
 			joinColumns = {@JoinColumn(name = "recipe", referencedColumnName="r_id")},

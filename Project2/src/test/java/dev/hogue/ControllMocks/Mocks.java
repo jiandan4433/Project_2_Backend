@@ -1,5 +1,6 @@
 package dev.hogue.ControllMocks;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -127,6 +128,50 @@ public class Mocks {
 		ResultActions ra = mockmvc.perform(put("/updateUser").contentType(MediaType.APPLICATION_JSON_VALUE).content(json));
 		ra.andExpect(status().isOk());
 	}
+	
+	@Test
+	public void deleteUser() throws Exception {
+		User fake = new User();
+		Recipe fake1 = new Recipe();
+		fake1.setName("deletingtest");
+		Ingredient ingredient = new Ingredient();
+		Instruction instruction = new Instruction();
+		ingredient.setName("fake ingredient");
+		instruction.setDescription("fake instruction");
+		instruction.setStepId(1);
+		fake1.addStep(instruction);
+		fake1.addIngredient(ingredient);
+		fake.addRecipe(fake1);
+		fake.setUsername("testing");
+		fake.setPassword("password");
+		Gson gson = new Gson();
+		String json = gson.toJson(fake);
+		us.createUser(fake);
+		Mockito.when(us.deleteUser(fake)).thenReturn(true);
+		ResultActions ra = mockmvc.perform(delete("/deleteUser").contentType(MediaType.APPLICATION_JSON_VALUE).content(json));
+		ra.andExpect(status().isOk());
+		
+	}
+	
+	@Test
+	public void deleteRecipe() throws Exception {
+		Recipe fake1 = new Recipe();
+		fake1.setName("deletingtest");
+		Ingredient ingredient = new Ingredient();
+		Instruction instruction = new Instruction();
+		ingredient.setName("fake ingredient");
+		instruction.setDescription("fake instruction");
+		instruction.setStepId(1);
+		fake1.addStep(instruction);
+		fake1.addIngredient(ingredient);
+		Gson gson = new Gson();
+		String json = gson.toJson(fake1);
+		rs.createRecipe(fake1);
+		Mockito.when(rs.deleteRecipe(fake1)).thenReturn(true);
+		ResultActions ra = mockmvc.perform(delete("/deleteRecipe").contentType(MediaType.APPLICATION_JSON_VALUE).content(json));
+		ra.andExpect(status().isOk());
+	}
+	
 	
 	@Test
 	public void getAllRecipe() throws Exception {
