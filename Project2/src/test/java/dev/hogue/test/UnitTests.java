@@ -46,8 +46,8 @@ public class UnitTests {
 	@Qualifier("UserServiceSpring")
 	UserService us;
 
-	public User user = new User("cc", "passwordtest");
-	public User user2 = new User("cc", "password2");
+	public User user = new User();
+	public User user2 = new User();
 	public Recipe recipe = new Recipe();
 	public Ingredient ingredient = new Ingredient();
 	public Instruction instruction = new Instruction();
@@ -56,8 +56,12 @@ public class UnitTests {
 	@Commit
 	@Order(1)
 	public void createUser() {
+		user.setUsername("cc");
+		user.setPassword("passsword");
 		System.out.println("step 1");
 		us.createUser(user);
+		user2.setUsername("cc");
+		user2.setPassword("newpassword");
 		System.out.println(us.createUser(user2));
 	}
 
@@ -106,6 +110,7 @@ public class UnitTests {
 	@Order(6)
 	public void updateuser() {
 		user.addRecipe(recipe);
+		user.setUsername("cc");
 		user.setPassword("new password");
 		us.update(user);
 	}
