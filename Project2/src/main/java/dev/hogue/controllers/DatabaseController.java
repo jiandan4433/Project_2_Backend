@@ -5,6 +5,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -112,6 +113,15 @@ public class DatabaseController {
 
 		System.out.println(message.getSid());
 		return;
+	}
+	
+	@RequestMapping(value="/deleteUser", method = RequestMethod.DELETE, consumes={"application/json"})
+	public boolean removeUser(@RequestBody User user) {
+		return us.deleteUser(user);
+	}
+	@RequestMapping(value="/deleteRecipe", method = RequestMethod.DELETE, consumes={"application/json"})
+	public boolean removeRecipe(@RequestBody Recipe recipe) {
+		return rs.deleteRecipe(recipe);
 	}
 
 }
