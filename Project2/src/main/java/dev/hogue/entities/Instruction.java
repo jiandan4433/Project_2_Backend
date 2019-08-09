@@ -17,8 +17,8 @@ public class Instruction {
 	@Column(name="i_id")
 	private int id;
 	
-	@Column(name = "step")
-	private int step;
+	@Column(name = "stepOrder")
+	private int stepOrder;
 	
 	@Column(name = "prior")
 	private int priorStepId;
@@ -59,11 +59,12 @@ public class Instruction {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getStep() {
-		return step;
+
+	public int getStepOrder() {
+		return stepOrder;
 	}
-	public void setStep(int step) {
-		this.step = step;
+	public void setStepOrder(int stepOrder) {
+		this.stepOrder = stepOrder;
 	}
 	public int getId() {
 		return id;
