@@ -84,7 +84,7 @@ public class Mocks {
 		Gson gson = new Gson();
 		//creating an recipe object off of the json
 		Recipe recipe = gson.fromJson(json, Recipe.class);
-		Mockito.when(rs.createRecipe(recipe)).thenReturn(recipe);
+		Mockito.when(rs.saveRecipe(recipe)).thenReturn(recipe);
 		ResultActions ra = mockmvc.perform(post("/createRecipe").contentType(MediaType.APPLICATION_JSON_VALUE).content(json));
 		ra.andExpect(status().isOk());
 	}
@@ -166,7 +166,7 @@ public class Mocks {
 		fake1.addIngredient(ingredient);
 		Gson gson = new Gson();
 		String json = gson.toJson(fake1);
-		rs.createRecipe(fake1);
+		rs.saveRecipe(fake1);
 		Mockito.when(rs.deleteRecipe(fake1)).thenReturn(true);
 		ResultActions ra = mockmvc.perform(delete("/deleteRecipe").contentType(MediaType.APPLICATION_JSON_VALUE).content(json));
 		ra.andExpect(status().isOk());

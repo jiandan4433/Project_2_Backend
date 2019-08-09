@@ -71,12 +71,12 @@ public class DatabaseController {
 
 	@RequestMapping(value="/createRecipe", method = RequestMethod.POST, consumes={"application/json"})
 	public boolean addRecipe(@RequestBody Recipe recipe) {
-		rs.createRecipe(recipe);
+		rs.saveRecipe(recipe);
 		return true;
 	}
 	@RequestMapping(value="/updateRecipe", method = RequestMethod.PUT)
 	public Recipe updateRecipe(@RequestBody Recipe recipe) {
-		return rs.updateRecipe(recipe);
+		return rs.saveRecipe(recipe);
 	}
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public User userLogin(@RequestBody User user) {
@@ -88,12 +88,19 @@ public class DatabaseController {
 	}
 	@RequestMapping(value="/ingredients", method = RequestMethod.GET)
 	public Set<Ingredient> getIngredients(){
+		for(Ingredient ingredient : ingred.getAllIngredient()) {
+			System.out.println(ingredient.getName());
+			for(Recipe recipe : ingredient.getUsedIn()) {
+				System.out.println(recipe.getName());
+			}
+		}
 		return ingred.getAllIngredient();
 	}
 	@RequestMapping(value="/recipes", method = RequestMethod.GET)
 	public Set<Recipe> getRecipes(){
 		return rs.getAllRecipes();
 	}
+	
 	@RequestMapping(value="/createUser", method = RequestMethod.POST, consumes={"application/json"})
 	public User createUser(@RequestBody User user) {
 		return us.createUser(user);
