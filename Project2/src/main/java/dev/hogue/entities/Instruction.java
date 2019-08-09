@@ -17,6 +17,9 @@ public class Instruction {
 	@Column(name="i_id")
 	private int id;
 	
+	@Column(name = "step")
+	private int step;
+	
 	@Column(name = "prior")
 	private int priorStepId;
 	
@@ -55,6 +58,15 @@ public class Instruction {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public int getStep() {
+		return step;
+	}
+	public void setStep(int step) {
+		this.step = step;
+	}
+	public int getId() {
+		return id;
 	}
 
 	
