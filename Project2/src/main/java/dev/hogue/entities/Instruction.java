@@ -17,43 +17,52 @@ public class Instruction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="i_id")
-	private int id;
+	private int i_id;
 	
 	@Column(name = "stepOrder")
 	private int stepOrder;
 	
+	@Column(name = "isSub")
+	private boolean isSub;
+	
 	@Column(name = "prior")
-	private int priorStepId;
+	private int prior;
 	
 	@Column(name="description")
 	private String description;
 	
 	@Column(name="duration")
-	private long duration;
+	private Long duration;
 
 	
 	
 	
+	public boolean isSub() {
+		return isSub;
+	}
+	public void setSub(boolean isSub) {
+		this.isSub = isSub;
+	}
 	public int getPriorStepId() {
-		return priorStepId;
+		return prior;
 	}
 	public void setPriorStepId(int priorStepId) {
-		this.priorStepId = priorStepId;
+		this.prior = priorStepId;
 	}
 	public Instruction() {
 		super();
 	}
 	public void setStepId(int priorStepId) {
-		this.priorStepId = priorStepId;
+		this.prior = priorStepId;
 	}
 	public long getDuration() {
 		return duration;
 	}
-	public void setDuration(long duration) {
+	public void setDuration(Long duration) {
 		this.duration = duration;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.i_id = id;
 	}
 	public String getDescription() {
 		return description;
@@ -69,7 +78,7 @@ public class Instruction {
 		this.stepOrder = stepOrder;
 	}
 	public int getId() {
-		return id;
+		return i_id;
 	}
 
 	
