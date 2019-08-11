@@ -29,7 +29,7 @@ public class Instruction {
 	private String description;
 	
 	@Column(name="duration")
-	private Time duration;
+	private long duration;
 
 	
 	
@@ -46,10 +46,10 @@ public class Instruction {
 	public void setStepId(int priorStepId) {
 		this.priorStepId = priorStepId;
 	}
-	public Time getDuration() {
+	public long getDuration() {
 		return duration;
 	}
-	public void setDuration(Time duration) {
+	public void setDuration(long duration) {
 		this.duration = duration;
 	}
 	public void setId(int id) {
