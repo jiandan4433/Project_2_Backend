@@ -32,12 +32,12 @@ public class Recipe {
 	@Column(name="title")
 	private String name;
 	
-	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
 	@Cascade({CascadeType.PERSIST})
 	private Set<Instruction> instructions;
 	
 	//@JsonIgnore
-	@ManyToMany()
+	@ManyToMany(fetch = FetchType.EAGER)
 	@Cascade({CascadeType.ALL})
 	@JoinTable(
 			name="recipe_ingredient",
