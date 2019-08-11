@@ -1,5 +1,7 @@
 package dev.hogue.entities;
 
+import java.sql.Time;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +29,7 @@ public class Instruction {
 	private String description;
 	
 	@Column(name="duration")
-	private long duration;
+	private Time duration;
 
 	
 	
@@ -44,10 +46,10 @@ public class Instruction {
 	public void setStepId(int priorStepId) {
 		this.priorStepId = priorStepId;
 	}
-	public long getDuration() {
+	public Time getDuration() {
 		return duration;
 	}
-	public void setDuration(long duration) {
+	public void setDuration(Time duration) {
 		this.duration = duration;
 	}
 	public void setId(int id) {
