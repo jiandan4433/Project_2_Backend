@@ -73,6 +73,7 @@ public class DatabaseController {
 	@CrossOrigin
 	@RequestMapping(value="/createRecipe", method = RequestMethod.POST, consumes={"application/json"})
 	public boolean addRecipe(@RequestBody Recipe recipe) {
+		System.out.println("GOOOOOOOOOOOOOOOOOOOOOOOTTT AAAAAAAAAAAA RESPPPPPPPPPPPPPPPONNNNNNNNNNSEEEEEEEE");
 		rs.saveRecipe(recipe);
 		return true;
 	}
